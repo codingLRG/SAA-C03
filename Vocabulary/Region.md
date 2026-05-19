@@ -1,0 +1,1 @@
+Cluster of [[Availability Zone]]s within miles, still within one country to conform to data privacy laws

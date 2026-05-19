@@ -1,0 +1,2 @@
+A list of guidelines that assist with ensuring your AWS application meets industry standard, not necessary to meet all standards for testing, but is required in production.
+The good foundation for all AWS applications.

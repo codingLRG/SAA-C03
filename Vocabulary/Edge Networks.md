@@ -1,0 +1,1 @@
+[[Point of Presence]] server that allows origin server to cache data for faster response time across country

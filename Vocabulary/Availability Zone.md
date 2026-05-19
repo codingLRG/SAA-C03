@@ -1,0 +1,1 @@
+Cluster of data centers, typically within 60 - 100 km of each other
