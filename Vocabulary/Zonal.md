@@ -1,0 +1,1 @@
+only attach a volume to any [[EC2]] instances in the same [[Availability Zone]]

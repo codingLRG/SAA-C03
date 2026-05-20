@@ -23,4 +23,4 @@ Estimated time: 40 minutes
 Starting services
 - Compute
 - Container
-Est time: 30 minutes
+Est time: 60 minutes
