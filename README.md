@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (109 days)
+# SAA-C03 - Exam Date: Sept 5th (108 days)
 - [x] AWS Basics
 - [ ] AWS Service Categories
 - [ ] AWS Identity and Management
@@ -19,3 +19,8 @@
 ## Session 1 (May 19th)
 First commit, finish section 1
 Estimated time: 40 minutes
+# Session 2 (May 20th)
+Starting services
+- Compute
+- Container
+Est time: 30 minutes

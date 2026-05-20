@@ -1,0 +1,1 @@
+Giving control to [[AWS]] for all server access, such as scale and runtime environment

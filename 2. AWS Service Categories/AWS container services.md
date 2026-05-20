@@ -1,0 +1,7 @@
+Used for shipping emulation of applications without the overhead of emulating a whole system with [[Virtual Machines]]
+[[ECS]]
+[[EKS]]
+[[ECR]]
+[[Fargate]]
+[[A2C]]
+[[Copilot]]
