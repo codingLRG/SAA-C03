@@ -1,0 +1,1 @@
+Non-relational database with no rigid schema

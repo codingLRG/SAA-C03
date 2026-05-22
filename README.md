@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (108 days)
+# SAA-C03 - Exam Date: Sept 5th (106 days)
 - [x] AWS Basics
 - [ ] AWS Service Categories
 - [ ] AWS Identity and Management
@@ -24,3 +24,9 @@ Starting services
 - Compute
 - Container
 Est time: 60 minutes
+# Session 3 (May 21st)
+Continuing services
+- Storage
+- Database
+- Deployment
+Est time: 75 minutes
