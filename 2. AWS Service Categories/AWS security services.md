@@ -1,0 +1,12 @@
+Protects data at rest or in transit and ddos attacks
+[[WAF]]
+[[Firewall Manager]]
+[[Shield]]
+[[GuardDuty]]
+[[CloudHSM]]
+[[KMS]]
+[[Secrets Manager]]
+[[ACM]]
+[[Macie]]
+[[Inspector]]
+[[Detective]]

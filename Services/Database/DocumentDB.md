@@ -1,1 +1,1 @@
-[[MongoDB]]-compatible
+[[MongoDB]]-compatible database

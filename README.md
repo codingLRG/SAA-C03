@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (106 days)
+# SAA-C03 - Exam Date: Sept 5th (102 days)
 - [x] AWS Basics
 - [ ] AWS Service Categories
 - [ ] AWS Identity and Management
@@ -30,3 +30,11 @@ Continuing services
 - Database
 - Deployment
 Est time: 75 minutes
+# Session 4 (May 25th)
+Continuing services
+- Monitoring
+- Audit and compliance
+- Networking and content delivery
+- Application integration
+- Security
+Est time: 120
