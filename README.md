@@ -37,4 +37,9 @@ Continuing services
 - Networking and content delivery
 - Application integration
 - Security
-Est time: 120
+Est time: 120 minutes
+# Session 5 (May 26th)
+Continuing services
+- Management and governance
+- Identity
+Est time: 45 minutes

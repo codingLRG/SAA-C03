@@ -1,0 +1,1 @@
+Schedule and automate [[EC2]] instances patches to minimize downtime
