@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (102 days)
+# SAA-C03 - Exam Date: Sept 5th (101 days)
 - [x] AWS Basics
 - [ ] AWS Service Categories
 - [ ] AWS Identity and Management
@@ -49,3 +49,6 @@ Continuing services
 - Transfer and migration
 
 Est time: 90 minutes
+# Session 6 (May 27th)
+
+Est time: 3:10 - 3:30
