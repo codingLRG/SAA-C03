@@ -1,0 +1,1 @@
+Consisting of parts that are the same; uniform in structure or composition

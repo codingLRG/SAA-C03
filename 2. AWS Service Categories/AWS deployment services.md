@@ -11,4 +11,5 @@ Allowed for hybrid structure and multi-cloud support
 [[VPC]]
 - Utilize [[EC2]] instances
 - [[CloudWatch]] to monitor
+
 [[Fargate]]

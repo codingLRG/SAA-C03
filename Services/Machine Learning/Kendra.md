@@ -1,0 +1,2 @@
+Intelligent search service
+Supports NLang processing

@@ -1,0 +1,1 @@
+50lbs, 80TB of usable storage, roughly dimensions of a workstation

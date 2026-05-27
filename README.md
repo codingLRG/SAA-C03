@@ -23,12 +23,14 @@ Estimated time: 40 minutes
 Starting services
 - Compute
 - Container
+
 Est time: 60 minutes
 # Session 3 (May 21st)
 Continuing services
 - Storage
 - Database
 - Deployment
+
 Est time: 75 minutes
 # Session 4 (May 25th)
 Continuing services
@@ -37,9 +39,13 @@ Continuing services
 - Networking and content delivery
 - Application integration
 - Security
+
 Est time: 120 minutes
 # Session 5 (May 26th)
 Continuing services
 - Management and governance
 - Identity
-Est time: 45 minutes
+- Machine learning
+- Transfer and migration
+
+Est time: 90 minutes
