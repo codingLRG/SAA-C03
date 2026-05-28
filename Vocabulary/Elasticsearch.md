@@ -1,0 +1,1 @@
+Distributed, multitenant-capable full-text search engine based on the [[Apache Lucene]] library

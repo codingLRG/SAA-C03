@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (101 days)
+# SAA-C03 - Exam Date: Sept 5th (100 days)
 - [x] AWS Basics
 - [ ] AWS Service Categories
 - [ ] AWS Identity and Management
@@ -50,5 +50,15 @@ Continuing services
 
 Est time: 90 minutes
 # Session 6 (May 27th)
+Continuing services
+- Analytic pt. 1
 
-Est time: 3:10 - 3:30
+Est time: 25 minutes
+# Session 7 (May 28th)
+Finish services
+- Analytic pt. 2
+
+Starting IAM
+- Overview
+
+Est time: 3:10 - 3:45

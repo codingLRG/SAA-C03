@@ -1,0 +1,1 @@
+Stores, encryptes, indexes and streams video data

@@ -1,0 +1,1 @@
+Open-source platform that allows you to build real-time streaming data pipelines
