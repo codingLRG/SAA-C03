@@ -60,5 +60,7 @@ Finish services
 
 Starting IAM
 - Overview
+- Identities
+- Policy types
 
-Est time: 3:10 - 3:45
+Est time: 60 minutes
