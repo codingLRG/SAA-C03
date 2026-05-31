@@ -1,0 +1,1 @@
+For [[VPC]]s that use [[Wavelength]] to deliver ultra-low latency applications for 5G devices

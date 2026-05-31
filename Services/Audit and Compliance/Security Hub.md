@@ -4,5 +4,5 @@ Collects security alerts and findings from [[AWS]] services:
 - [[GuardDuty]]
 - [[Inspector]]
 - [[Macie]]
-- [[IAM Access Analyzer]]
+- [[IAM access analyzer]]
 - [[Firewall Manager]]

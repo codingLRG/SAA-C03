@@ -1,0 +1,5 @@
+[[Internet Gateway]]
+[[Customer Gateway]]
+[[Virtual Private Gateway]]
+[[Carrier Gateway]]
+[[Egress-only Internet Gateway]]

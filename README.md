@@ -1,7 +1,7 @@
-# SAA-C03 - Exam Date: Sept 5th (100 days)
+# SAA-C03 - Exam Date: Sept 5th (97 days)
 - [x] AWS Basics
-- [ ] AWS Service Categories
-- [ ] AWS Identity and Management
+- [x] AWS Service Categories
+- [x] AWS Identity and Management
 - [ ] Amazon Virtual Private Cloud
 - [ ] Amazon EC2
 - [ ] Amazon EC2 Auto Scaling
@@ -64,3 +64,21 @@ Starting IAM
 - Policy types
 
 Est time: 60 minutes
+
+# Session 8 (May 30th)
+Continuing IAM
+- Policy basics
+- IAM policy evaluation logic
+- IAM Access Analyzer
+
+Est time: 25 minutes
+
+# Session 9 (May 31st)
+Finished IAM
+
+Start Amazon VPC
+- Overview
+- Anatomy
+- Network architectures
+
+Est time: 45 minutes
