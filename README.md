@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (97 days)
+# SAA-C03 - Exam Date: Sept 5th (93 days)
 - [x] AWS Basics
 - [x] AWS Service Categories
 - [x] AWS Identity and Management
@@ -82,3 +82,12 @@ Start Amazon VPC
 - Network architectures
 
 Est time: 45 minutes
+
+# Session 11? (June 4th)
+Continuing EC2
+- Reserved
+- Dedicated
+- Saving plan
+- Capacity
+
+Est time: 20 minutes

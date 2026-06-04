@@ -1,0 +1,1 @@
+Can be a cluster, spread or partition table type that minimize correlated failures, lower network latency, and achieve high throughput
