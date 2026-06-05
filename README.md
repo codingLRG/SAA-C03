@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 # SAA-C03 - Exam Date: Sept 5th (93 days)
+=======
+# SAA-C03 - Exam Date: Sept 5th (96 days)
+>>>>>>> 19cf6b7 (Session 10)
 - [x] AWS Basics
 - [x] AWS Service Categories
 - [x] AWS Identity and Management
-- [ ] Amazon Virtual Private Cloud
+- [x] Amazon Virtual Private Cloud
 - [ ] Amazon EC2
 - [ ] Amazon EC2 Auto Scaling
 - [ ] AWS Storage Services
@@ -80,6 +84,11 @@ Start Amazon VPC
 - Overview
 - Anatomy
 - Network architectures
+
+Est time: 45 minutes
+
+# Session 10 (June 1st)
+Finished VPC
 
 Est time: 45 minutes
 

@@ -1,0 +1,1 @@
+Actual IP address range, works like an alias for address range so it can be utilized in multiple uses without needing for mass updating
