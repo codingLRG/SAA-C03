@@ -92,11 +92,13 @@ Finished VPC
 
 Est time: 45 minutes
 
-# Session 11? (June 4th)
-Continuing EC2
+# Session 11 (June 4th)
+Starting EC2
 - Reserved
 - Dedicated
 - Saving plan
 - Capacity
+- Instance types
+- AMI
 
-Est time: 20 minutes
+Est time: 70 minutes

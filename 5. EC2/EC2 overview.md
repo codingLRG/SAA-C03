@@ -16,4 +16,4 @@ Basic building block of services
 | [[ENA]]                         | Network      |
 | [[EFA]]                         | Network      |
 | [[EC2 auto scaling]]            | Auto Scaling |
-| [[AMI]]                         | Disk image   |
+| [[Vocabulary/AMI]]                         | Disk image   |
