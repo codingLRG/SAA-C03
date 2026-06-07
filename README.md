@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 # SAA-C03 - Exam Date: Sept 5th (93 days)
-=======
-# SAA-C03 - Exam Date: Sept 5th (96 days)
->>>>>>> 19cf6b7 (Session 10)
+
 - [x] AWS Basics
 - [x] AWS Service Categories
 - [x] AWS Identity and Management
@@ -102,3 +99,9 @@ Starting EC2
 - AMI
 
 Est time: 70 minutes
+
+# Session 12? (June 6th)
+Finished EC2
+- All Hand-on labs
+
+Est time 60 minutes
