@@ -100,7 +100,15 @@ Starting EC2
 
 Est time: 70 minutes
 
-# Session 12? (June 6th)
+# Session 12 (June 5th)
+Continuing EC2
+- Image Builder
+- Instance user data
+- Instance metadata
+- Networking
+
+Est time: 45 minutes
+# Session 13 (June 6th)
 Finished EC2
 - All Hand-on labs
 
