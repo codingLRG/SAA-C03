@@ -1,10 +1,10 @@
-# SAA-C03 - Exam Date: Sept 5th (93 days)
+# SAA-C03 - Exam Date: Sept 5th (89 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
 - [x] AWS Identity and Management
 - [x] Amazon Virtual Private Cloud
-- [ ] Amazon EC2
+- [x] Amazon EC2
 - [ ] Amazon EC2 Auto Scaling
 - [ ] AWS Storage Services
 - [ ] AWS Databases
@@ -111,5 +111,10 @@ Est time: 45 minutes
 # Session 13 (June 6th)
 Finished EC2
 - All Hand-on labs
+
+Est time 60 minutes
+
+# Session 14 (June 8th)
+Finished Auto scaling
 
 Est time 60 minutes

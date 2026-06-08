@@ -1,0 +1,1 @@
+Time interval before another [[EC2 auto scaling]] action can be executed to prevent conflicts within auto scaling group

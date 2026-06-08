@@ -1,0 +1,1 @@
+Dynamically acquire or release resources when needed
