@@ -5,7 +5,7 @@
 - [x] AWS Identity and Management
 - [x] Amazon Virtual Private Cloud
 - [x] Amazon EC2
-- [ ] Amazon EC2 Auto Scaling
+- [x] Amazon EC2 Auto Scaling
 - [ ] AWS Storage Services
 - [ ] AWS Databases
 - [ ] Amazon CloudWatch
@@ -118,3 +118,11 @@ Est time 60 minutes
 Finished Auto scaling
 
 Est time 60 minutes
+# Session 15 (June 9th)
+Starting Storage Services
+- EBS overview
+- EBS type
+- S3 overview
+- Storage classes (mostly finished)
+
+Est 85 minutes

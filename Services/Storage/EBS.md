@@ -6,24 +6,16 @@ aliases:
 > Elastic Block Store
 
 Persistent block-level storage service
+- Will not get lost in case instance was stopped, restarted or terminated
 Mounted to [[EC2]] instances
+- Multiple EBS instances can be attached to a single [[EC2]]
 [[Zonal]]
 Can be [[encrypted at rest]] using [[KMS]]
 
-| Type | Use Case            | Dominant Performance Attribute     | Boot Volume for EC2? |
-| ---- | ------------------- | ---------------------------------- | -------------------- |
-| SSD  | Frequent read write | Input/Output operations per second | Yes                  |
-| HDD  | Data achive         | Throughput                         | No                   |
-> Types
-- General Purpose SSD
-- Provisioned IOPS SSD (can be attached to multiple [[EC2]] at the same time)
-	- EBS Multi-Attach (only allowed for [[Nitro]]-based instances of [[EC2]])
-		- Cannot modify same file at the same time in multi instances
-			- If feature needed, use [[EFS]]
-- Throughput Optimized HDD
-- Cold HDD
+[[EBS types]]
 
 Faster data retrieval than:
 - [[S3]]
+	- but [[S3]] is cheaper
 - [[EFS]]
-
+	- but [[EFS]] and [[FSx for Lustre]]/[[FSx for Windows File Server]] can modify the same file at the same time in multi instances
