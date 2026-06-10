@@ -126,3 +126,15 @@ Starting Storage Services
 - Storage classes (mostly finished)
 
 Est 85 minutes
+
+# Session 16 (June 10th)
+Continuing Storage Service
+- Storage classes
+- Minimum storage duration
+- Event notification
+- EFS overview
+- FSx for Lustre
+- FSx for Windows File Server
+- FSx for OpenZFS
+
+Est 40 minutes

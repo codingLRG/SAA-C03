@@ -1,0 +1,1 @@
+Basically if you store something there, you pay the minimum storage duration even if you don't use it

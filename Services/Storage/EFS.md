@@ -11,3 +11,4 @@ Uses [[NFS]] protocol
 Only Linux
 Standard and IA
 Can have Lifecycle policy
+Can use [[KMS]] for at rest and in transit
