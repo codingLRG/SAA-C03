@@ -2,6 +2,9 @@
 aliases:
   - Amazon Machine Image
 ---
+> Amazon machine image
+
+Disc image that contains custom data and system config that you have set
 Launch preconfigured [[EC2]] instance
 
 | Block Store Type       | Volume Snapshots             | Block Device Mapping    |

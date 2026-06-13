@@ -1,0 +1,1 @@
+Allow you to create unique access paths for different applications or users accessing the same [[S3]]

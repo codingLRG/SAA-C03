@@ -1,0 +1,2 @@
+A service that helps businesses maintain business continuity by enabling quick recovery of on-premises or cloud-based workloads
+Not the backup server itself, but the process of moving from backup to working server

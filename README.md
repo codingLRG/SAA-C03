@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (89 days)
+# SAA-C03 - Exam Date: Sept 5th (86 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -136,5 +136,15 @@ Continuing Storage Service
 - FSx for Lustre
 - FSx for Windows File Server
 - FSx for OpenZFS
+
+Est 40 minutes
+
+# Session 17 (June 11th)
+Continuing Storage Service
+- ONTAP
+- Lifecycle Manager
+- Backup
+- Disaster recover
+- S3 console
 
 Est 40 minutes

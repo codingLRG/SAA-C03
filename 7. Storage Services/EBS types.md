@@ -1,3 +1,7 @@
+---
+aliases:
+  - EBS Volume Type
+---
 [[EBS]]
 
 | Type | Use Case            | Dominant Performance Attribute     | Boot Volume for EC2? |

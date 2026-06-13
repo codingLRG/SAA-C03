@@ -1,0 +1,8 @@
+- [[Access Grants]]
+- [[Access Points]]
+- [[Object Lambda Access Points]]
+- Multi-Region [[Access Points]]: improve performance for globally distributed users
+- Batch Operations: Execute batch processes like data duplication, tagging or moving across [[S3]] buckets
+- [[IAM]] Access Analyzer for [[S3]]: monitor and manage external access to [[S3]] resources
+- Block Public Access setting
+- [[AWS Marketplace]]

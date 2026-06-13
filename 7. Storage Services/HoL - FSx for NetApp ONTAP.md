@@ -1,0 +1,1 @@
+Very similar to [[HoL - FSx for OpenZFS]], however [[ONTAP]] has storage VMs to virtually isolate and manage data
