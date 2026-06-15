@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (86 days)
+# SAA-C03 - Exam Date: Sept 5th (83 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -148,3 +148,5 @@ Continuing Storage Service
 - S3 console
 
 Est 40 minutes
+
+# Session 19 (June 14th)

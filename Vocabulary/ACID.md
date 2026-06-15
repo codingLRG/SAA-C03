@@ -1,0 +1,1 @@
+Atomic, Consistent, Isolated, Durable
