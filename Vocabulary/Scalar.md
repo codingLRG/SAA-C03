@@ -1,0 +1,1 @@
+a quantity defined entirely by its magnitude (a numerical value and its units), possessing no directional component

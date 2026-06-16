@@ -1,0 +1,8 @@
+- For applications with well-defined schemas
+- Thousands of tables
+- Multiple table joins
+- Foreign keys
+- Complex SQL queries
+- Relationships with other tables
+- [[ACID]] properties
+- For transactional workloads

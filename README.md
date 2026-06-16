@@ -166,3 +166,10 @@ Starting DBs
 - Aurora
 
 Est 40 minutes
+
+# Session 20 (June 16th)
+Continuing DBs
+- DynamoDB
+- DynamoDB Components
+
+Est 40 minutes
