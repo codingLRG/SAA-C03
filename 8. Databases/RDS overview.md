@@ -31,4 +31,4 @@ Suitable for constantly changing data
 
 [[ACID]] compliant
 
-Feature called [[RDS Proxy]]
+Feature called [[Vocabulary/RDS Proxy]]

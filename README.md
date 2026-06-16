@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (83 days)
+# SAA-C03 - Exam Date: Sept 5th (81 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -6,7 +6,7 @@
 - [x] Amazon Virtual Private Cloud
 - [x] Amazon EC2
 - [x] Amazon EC2 Auto Scaling
-- [ ] AWS Storage Services
+- [x] AWS Storage Services
 - [ ] AWS Databases
 - [ ] Amazon CloudWatch
 - [ ] AWS System Manager
@@ -149,4 +149,20 @@ Continuing Storage Service
 
 Est 40 minutes
 
-# Session 19 (June 14th)
+
+# Session 18 (June 13th)
+Finished storage and started DBs
+- HoL Labs
+- RDS
+- Read Replicas
+
+Est 45 minutes
+
+# Session 19 (June 15th)
+Starting DBs
+- Multi-AZ
+- Event notification
+- Proxy
+- Aurora
+
+Est 40 minutes
