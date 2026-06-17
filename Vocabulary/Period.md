@@ -1,0 +1,1 @@
+Defines the length of time to evaluate a metric expressed in seconds

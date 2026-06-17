@@ -9,7 +9,7 @@
 	- Launch config (limited features)
 - Template for:
 	- Auto Scaling Group
-	- [[Vocabulary/AMI|AMI]] ID
+	- [[AMI]] ID
 	- [[EC2 Instance Type]],
 	- Key Pair
 	- [[Security Group]] 

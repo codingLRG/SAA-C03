@@ -1,0 +1,1 @@
+Defines number of most recent periods that you evaluate when determining alarm state

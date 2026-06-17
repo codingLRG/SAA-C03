@@ -173,3 +173,14 @@ Continuing DBs
 - DynamoDB Components
 
 Est 40 minutes
+
+# Session 21 (June 17th)
+Finished DBs and starting CloudWatch
+- Global Secondary Index
+- Local Secondary Index
+- CW Overview
+- CW Metrics for EC2
+- CW Alarms
+
+Est 45 minutes
+
