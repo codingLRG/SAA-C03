@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (81 days)
+# SAA-C03 - Exam Date: Sept 5th (75 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -7,8 +7,8 @@
 - [x] Amazon EC2
 - [x] Amazon EC2 Auto Scaling
 - [x] AWS Storage Services
-- [ ] AWS Databases
-- [ ] Amazon CloudWatch
+- [x] AWS Databases
+- [x] Amazon CloudWatch
 - [ ] AWS System Manager
 - [ ] AWS CloudFormation
 - [ ] AWS Networking and Application Integration Services
@@ -184,3 +184,11 @@ Finished DBs and starting CloudWatch
 
 Est 45 minutes
 
+# Session 22 (June 22nd)
+Finished CloudWatch and starting Sys Manager
+- Logs and metrics
+- Events
+- Param Store
+- AppConfig
+
+Est 40 minutes
