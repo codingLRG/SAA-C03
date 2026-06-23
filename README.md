@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (75 days)
+# SAA-C03 - Exam Date: Sept 5th (74 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -192,3 +192,11 @@ Finished CloudWatch and starting Sys Manager
 - AppConfig
 
 Est 40 minutes
+
+# Session 23 (June 23rd)
+Confinuing Sys Manager
+- Automation
+- Run Command
+- Change Manager
+
+Est 25 minutes

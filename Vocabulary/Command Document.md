@@ -1,0 +1,1 @@
+Predefined JSON or YAML documents that specify what [[HoL - Systems Manager Run Command]]
