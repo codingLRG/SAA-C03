@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (74 days)
+# SAA-C03 - Exam Date: Sept 5th (73 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -9,7 +9,7 @@
 - [x] AWS Storage Services
 - [x] AWS Databases
 - [x] Amazon CloudWatch
-- [ ] AWS System Manager
+- [x] AWS System Manager
 - [ ] AWS CloudFormation
 - [ ] AWS Networking and Application Integration Services
 - [ ] Other AWS Services
@@ -194,9 +194,18 @@ Finished CloudWatch and starting Sys Manager
 Est 40 minutes
 
 # Session 23 (June 23rd)
-Confinuing Sys Manager
+Continuing Sys Manager
 - Automation
 - Run Command
 - Change Manager
 
 Est 25 minutes
+
+# Session 24 (June 24th)
+Finished Sys Manager and starting CloudFormation
+- Patch Manager
+- Param Store
+- Overview
+- Templates (WIP)
+
+Est 40 minutes

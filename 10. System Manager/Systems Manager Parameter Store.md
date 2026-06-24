@@ -4,6 +4,17 @@ Assists with improving operational integration
 - Shortens time to detect and resolve operational problems
 - Easier scalability
 
+3 Types of Params:
+- String
+- StringList
+- Secure String
+
+Parameter Tiers:
+
+| Type     | Num of Params Allowed | Max size of param value (KB) | Parameter Policies | Cost          |
+| -------- | --------------------- | ---------------------------- | ------------------ | ------------- |
+| Standard | 10000                 | 4                            | No                 | Free          |
+| Advanced | 100000                | 8                            | Yes                | Charges Apply |
 [[Parameter Store]]:
 - Capability of the [[SSM|Systems Manager]]
 - Store and access:
