@@ -1,0 +1,1 @@
+Resource attribute that specify a resource shall only be created upon successful launch of another resource

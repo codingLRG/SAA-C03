@@ -2,9 +2,9 @@ Provisions [[AWS]] resources using [[JSON]] or [[YAML]]
 GUI tool called CloudFormation designer
 Primary [[Infrastructure as Code]] in [[AWS]]
 Features include:
-- [[Nested Stacks]]
+- [[Vocabulary/Nested Stacks]]
 - [[Change Sets]]
-- [[StackSets]]
+- [[Vocabulary/StackSets]]
 Modules are connected via a stack
 [[CDK]] allows to programmatically design [[AWS]] infrastructure
 - Java

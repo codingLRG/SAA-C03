@@ -1,0 +1,1 @@
+signal to indicate whether [[EC2]] has been successfully created or updated

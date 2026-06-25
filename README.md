@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (73 days)
+# SAA-C03 - Exam Date: Sept 5th (72 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -207,5 +207,14 @@ Finished Sys Manager and starting CloudFormation
 - Param Store
 - Overview
 - Templates (WIP)
+
+Est 40 minutes
+
+# Session 25 (June 25th)
+Continuing CloudFormation
+- Templates
+- Helper scripts
+- DependsOn and WaitCondition
+- Nested stacks
 
 Est 40 minutes

@@ -1,0 +1,2 @@
+[[CloudFormation Helper Scripts]] reads template metadata from ==AWS::CloudFormation::Init== key, does certain actions according to response
+- Metadata's Install and Configure commands will not run without cfn-init invocation 
