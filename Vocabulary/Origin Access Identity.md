@@ -1,0 +1,1 @@
+Restrict [[S3]] access on [[CloudFront]] using this

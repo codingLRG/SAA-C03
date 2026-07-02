@@ -1,16 +1,25 @@
 DNS web service
+- Purchased domain names
+
 Map domain names to:
 - [[Elastic IP address]]
 - [[EC2 instance]]
 - [[S3 Static Website]]
 - [[ELB]]
 - [[CloudFront Web Distributions]]
+
 Purchase and assign subdomains
 Routing policies:
-- Simple
-- Failover
-- Geolocation
-- Geoproximity
-- Latency-Based
-- Multivalue Answer
-- Weighted
+[[Route 53 routing policies]]
+
+DNS record types:
+- [[A Record]]
+- [[AAAA Record]]
+- [[CNAME]]
+- [[MX]]
+- [[TXT]]
+- [[PTR]]
+- [[SRV]]
+- [[SPF]]
+- [[NAPTR]]
+- [[CAA]]

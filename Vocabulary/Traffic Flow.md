@@ -1,0 +1,1 @@
+Feature that simplifies the process of creating and maintaining DNS records
