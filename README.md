@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (70 days)
+# SAA-C03 - Exam Date: Sept 5th (61 days)
 
 - [x] AWS Basics
 - [x] AWS Service Categories
@@ -11,7 +11,7 @@
 - [x] Amazon CloudWatch
 - [x] AWS System Manager
 - [x] AWS CloudFormation
-- [ ] AWS Networking and Application Integration Services
+- [x] AWS Networking and Application Integration Services
 - [ ] Other AWS Services
 - [ ] Cost and Billing Management
 - [ ] Comparison of AWS Services and Topics
@@ -227,3 +227,12 @@ Finished CloudFormation, starting Networking and Application Integration
 - CloudFront
 
 Est 60 minutes
+
+# Session 28 (July 6th)
+Finished Networking and Application Integration
+- App integration
+- SQS
+- SNS
+- Step Functions
+
+Est 40 minutes

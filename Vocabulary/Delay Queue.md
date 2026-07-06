@@ -1,0 +1,1 @@
+Normal [[SQS]] with an adjusted Delivery Delay setting
