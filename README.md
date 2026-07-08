@@ -1,5 +1,6 @@
 # SAA-C03 - Exam Date: Sept 5th (61 days)
 
+
 - [x] AWS Basics
 - [x] AWS Service Categories
 - [x] AWS Identity and Management
@@ -227,6 +228,13 @@ Finished CloudFormation, starting Networking and Application Integration
 - CloudFront
 
 Est 60 minutes
+
+# Session 27 (July 2nd)
+- CloudFront Security features
+- ELB overview
+- ELB types
+
+Est 30 minutes
 
 # Session 28 (July 6th)
 Finished Networking and Application Integration
