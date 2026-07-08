@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (61 days)
+# SAA-C03 - Exam Date: Sept 5th (59 days)
 
 
 - [x] AWS Basics
@@ -230,6 +230,7 @@ Finished CloudFormation, starting Networking and Application Integration
 Est 60 minutes
 
 # Session 27 (July 2nd)
+Continuing Networking and Application Integration
 - CloudFront Security features
 - ELB overview
 - ELB types
@@ -244,3 +245,15 @@ Finished Networking and Application Integration
 - Step Functions
 
 Est 40 minutes
+
+# Session 29 (July 7th)
+Starting Other AWS Services
+- Serverless overview
+- Serverless architecture
+- Lambda overview
+- API Gateway
+- Audit Manager
+- Amplify
+- Amplify demo
+
+Est 60 minutes
