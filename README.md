@@ -257,3 +257,12 @@ Starting Other AWS Services
 - Amplify demo
 
 Est 60 minutes
+
+# Session 30 (July 8th)
+Continuing Other AWS Services
+- Elastic Beanstalk
+- Config
+- Detective
+- Compute Optimizer
+
+Est 40 minutes

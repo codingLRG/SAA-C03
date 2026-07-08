@@ -1,0 +1,1 @@
+Process which you resize or reconfigure computing resources to match workload performance at lowest cost
