@@ -5,5 +5,11 @@ Built-in integrations for:
 - [[Redshift]]
 - [[DocumentDB]]
 - [[Lambda]]
-Central access to secrets, good for auditting
+Central access to secrets, good for auditing
+Storing plaintext is not possible and needs [[KMS]]
+Secret name ID
+Dynamic credential
+```YAML
+MasterUsername: '{{resolve:secretmanager:mySecret:SecretString:username}}'
+```
 Not recommended for encryption keys or key materials since it ==does not use [[HSM]]==

@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (53 days)
+# SAA-C03 - Exam Date: Sept 5th (52 days)
 
 
 - [x] AWS Basics
@@ -276,5 +276,15 @@ Continuing Other AWS Services
 - Macie
 - Network Firewall
 - Resource Access Manager
+
+Est 60 minutes
+
+# Session 32 (July 14th)
+Finish Other AWS Services
+- Secrets Manager
+- Security Hub
+- OpenSearch Service
+- QuickSight
+- HoL Organization
 
 Est 60 minutes
