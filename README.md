@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (59 days)
+# SAA-C03 - Exam Date: Sept 5th (53 days)
 
 
 - [x] AWS Basics
@@ -266,3 +266,15 @@ Continuing Other AWS Services
 - Compute Optimizer
 
 Est 40 minutes
+
+# Session 31 (July 13th)
+Continuing Other AWS Services
+- Directory Service
+- Organizations
+- CloudTrail
+- CloudTrail integrations
+- Macie
+- Network Firewall
+- Resource Access Manager
+
+Est 60 minutes

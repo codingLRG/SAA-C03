@@ -1,0 +1,1 @@
+Accounts, [[Organizational Units]] or [[IAM Role]]s and [[IAM User]]s granting access to resources via [[RAM|Resource Access Manager]]
