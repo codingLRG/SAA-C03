@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (52 days)
+# SAA-C03 - Exam Date: Sept 5th (51 days)
 
 
 - [x] AWS Basics
@@ -13,8 +13,8 @@
 - [x] AWS System Manager
 - [x] AWS CloudFormation
 - [x] AWS Networking and Application Integration Services
-- [ ] Other AWS Services
-- [ ] Cost and Billing Management
+- [x] Other AWS Services
+- [x] Cost and Billing Management
 - [ ] Comparison of AWS Services and Topics
 - [ ] AWS SageMaker Series
 - [ ] AWS Machine Learning Services
@@ -288,3 +288,8 @@ Finish Other AWS Services
 - HoL Organization
 
 Est 60 minutes
+
+# Session 33 (July 15th)
+Finished Cost and Billing Management
+
+Est 30 minutes
