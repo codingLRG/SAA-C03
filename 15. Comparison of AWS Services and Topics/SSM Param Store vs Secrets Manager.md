@@ -1,0 +1,6 @@
+[[SSM]] and [[Secrets Manager]]
+
+| Type                | Size                                                   | Encryption        | Versioning                                                                | Auto Rotation                                                         | Cost                                                            |
+| ------------------- | ------------------------------------------------------ | ----------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [[SSM]]             | >=4KB per entry (Standard), >=8KB per entry (Advanced) | [[KMS]], optional | One version active at any given time                                      | NA                                                                    | Standard: Free/Advanced: $0.05/param/month, $0.05/10k API calls |
+| [[Secrets Manager]] | >=64KB, good for certificates                          | [[KMS]], required | Multi versions can exist at the same time when performing secret rotation | Rotates automatically, cross-account access, generate random password | $0.40/secret/month, $0.05/10k API calls                         |

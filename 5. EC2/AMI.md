@@ -31,4 +31,4 @@ Virtualization Type:
 
 Heavily used in [[EC2 auto scaling]]
 - [[SQS]] to increase or decrease instances in group
-- Perfect for [[stateless]] application
+- Perfect for [[Stateless]] application

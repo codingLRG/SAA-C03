@@ -1,0 +1,1 @@
+evaluate each packet independently against static rules (e.g., Access Control Lists) without remembering previous packets.

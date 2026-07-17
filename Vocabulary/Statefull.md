@@ -1,0 +1,1 @@
+inspect the context of traffic by tracking active connections in a "state table," automatically allowing return traffic for initiated sessions.
