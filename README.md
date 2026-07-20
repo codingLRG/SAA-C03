@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (50 days)
+# SAA-C03 - Exam Date: Sept 5th (47 days)
 
 
 - [x] AWS Basics
@@ -16,9 +16,9 @@
 - [x] Other AWS Services
 - [x] Cost and Billing Management
 - [x] Comparison of AWS Services and Topics
-- [ ] AWS SageMaker Series
+- [x] AWS SageMaker Series
 - [ ] AWS Machine Learning Services
-## Session 1 (May 19th)
+# Session 1 (May 19th)
 First commit, finish section 1
 Estimated time: 40 minutes
 # Session 2 (May 20th)
@@ -298,3 +298,8 @@ Est 30 minutes
 Finished Comparison of AWS Services and Topics
 
 Est 75 minutes
+
+# Session 35 (July 20th)
+Finished SageMaker Series
+
+Est 60 minutes
