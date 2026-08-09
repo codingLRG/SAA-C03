@@ -1,4 +1,4 @@
-# SAA-C03 - Exam Date: Sept 5th (47 days)
+# SAA-C03 - Exam Date: Sept 5th (41 days)
 
 
 - [x] AWS Basics
@@ -303,3 +303,5 @@ Est 75 minutes
 Finished SageMaker Series
 
 Est 60 minutes
+
+# Session 36 (July 25th)
