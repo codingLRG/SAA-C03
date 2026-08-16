@@ -1,0 +1,1 @@
+VPC Endpoints help in maintaining secure, private connectivity to AWS services without using the public internet
