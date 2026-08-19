@@ -4,8 +4,10 @@
 > Allows services such as [[EC2]]s and [[Database]]s in separate private [[Subnets]] to communicate to one another
 - Can also deny traffic from each other
 - [[Peering connection]] allows complete communication between each [[Subnet]] as if they were one, however this can lead to unwanted ability to connect between services in separate [[Subnets]]
+
 > To allow access to a bastion host on a public subnet within the internal network: update the security group to allow access from the internal ip range
 - Access via external IP reduces security
+
 > To allow access to a private server on a private subnet within the internal network: connect to the bastion host first, then allow access from the bastion's private ip
 - Access via bastion's public ip reduces security
 - Access via network's private ip does not allow the bastion host to negate unwanted connections
@@ -67,6 +69,7 @@
 - [[MFA]] on [[IAM User]] is good for security, but does not address accidental deletion
 - [[Lifecycle policy]] can not prevent data from being deleted prematurely, only automates transitions of objects over time
 - Encryption and restricting access to the bucket does not address accidental deletion
+
 > To prevent unwanted changes, [[Config]] can enforce the right rules while monitoring specific changes
 - [[Trusted Advisor]] does not prevent changes, it is used for recommendations for:
 	- Save money
@@ -85,6 +88,7 @@
 ## [[Organization]]
 > The term "Owner" refers to the Root account
 - [[IAM Role]]s do not change this terms meaning
+
 > Secure access to Root user, [[MFA]] and using a strong password is the best course of action
 - Storing password in an encrypted [[S3]] opens risk of keys being retrieved
 - Assigning root to [[IAM Group]] does not remove full admin access that root has

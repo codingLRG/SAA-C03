@@ -3,7 +3,7 @@
 Useful with [[Lambda]]
 - [[EventBridge]] (scheduling)
 - [[Step Functions]] (orchestration)
-- [[Lamda@Edge]] ([[Region]]al edge location)
+- [[Lambda@Edge]] ([[Region]]al edge location)
 - [[CloudFront]] (Edge locations)
 
 [[Fargate]] for [[Docker]] and [[Kubernetes]]

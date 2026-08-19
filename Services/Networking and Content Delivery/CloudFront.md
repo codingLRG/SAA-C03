@@ -8,7 +8,7 @@ Images, videos, media files, software packages
 Features: 
 [[Origin Access Identity]]
 [[Geo-Restriction]]
-[[Lamda@Edge]]
+[[Lambda@Edge]]
 [[Origin Group]]
 [[Origin Failover]]
 [[Signed URL]]
