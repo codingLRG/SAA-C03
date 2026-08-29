@@ -28,7 +28,7 @@ Read Replica can be promoted to primary
 Cannot encrypt a Read Replica from a non encrypted DB source
 - Cross-[[Region]] encryption is possible via [[KMS]] being supplied
 
-Read Replica Use-cases:
+# Read Replica Use-cases:
 - Offloading heavy read tasks from primary DB 
 - Separate read requests from write requests
 

@@ -1,9 +1,18 @@
 # High availability
-## [[EC2 auto scaling]]
+## [[EC2]]
 > [[Auto Scaling Groups]] are able to be assigned to multiple [[Availability Zone]]s to provide redundancy, allowing for high availability without modifying the application code
 - Creating separate [[Auto Scaling Groups]] in different [[Availability Zone]]s does not provide high availability without modifying the application code, as now the traffic will have to be shifted
 - Using [[Lambda]] to automatically switch does not provide real-time high availability and would also require changes to the code to work
 
+> [[EC2]] storage is ephemeral, meaning its only in conjunction with the [[EC2 instance]]
+- It persists after a reboot, but not when it stops, terminates or hibernates or disk failure
+
+> [[Spot Instances]] will execute a forced shutdown when you receive a notification of termination without intervention (ie Delay or Termination Protection), or if the lease expires
+
+## [[Elastic Beanstalk]]
+> [[Elastic Beanstalk]] is used for web applications and static websites
+- Not for long-running jobs, use [[Batch]]
+- Not for data lake, use [[S3]]
 # Networking
 ## [[Route 53]]
 > Utilizing [[Route 53 routing policies#Geolocation|Geolocation]] can eliminate connecting to the wrong continental environment to resolve language barrier
@@ -16,10 +25,15 @@
 ## [[Amazon EC2 networking]]
 > [[Elastic IP address]]es remain associated with the instance, even after shutdown
 
+> To ensure high resiliency and Internet accessible, an [[ELB]] connecting your Web Server and configure [[Route 53]] [[CNAME]] to use public DNS address of [[ELB]]. Have Web Servers assign an [[Elastic IP address]] and configure [[Route 53]] with both IPs and set up health checks with DNS failover
+
 > [[NAT Gateway]]s allow connecting your public subnet your private subnet with high availability, keeping your private subnet private, while enabling internet connectivity
 - [[Internet Gateway]] will make the private subnet public, this should be connected to your public subnet
 - [[NAT Instance]] will not allow for high availability unless you utilize multiple, however this can add up in cost
 - [[VPC Endpoint]] allows private connectivity from an [[AWS]] service, not the internet
+- [[NAT Gateway]] alone does not allow outbound internet traffic, routing needs to be updated
+
+> Utilize multiple [[Subnets]] across [[Availability Zone]]s and configure the [[Auto Scaling Groups]] to spread across [[Availability Zone]]s to have high availability
 
 ## Failure Recovery
 > In the case of data failing to arrive due to network connection issues, requiring manually running the process again, configure the retry settings to increase the number of retries and longer wait time
@@ -40,6 +54,9 @@
 - [[EC2]], [[AMI]] and [[EBS]] handles [[EC2]] replica deployment, however this doesn't handle any other service in your architecture
 - [[Elastic Beanstalk]] can not be used to deploy infrastructure in a different region
 
+> For [[EC2]] disaster recovery, copy the [[AMI]]s to a secondary [[Region]] and use [[CloudFormation]] to automate infrastructure deployment
+- [[Lambda]] is unnecessary to use custom scripting
+- No need to run [[EC2]] in a different [[Region]] online as this will result in unused capacity
 
 ## [[SQS]]
 > For sending messages between application that have a high throughput and in the case the processing fails, the messages must be retained for 2 days while not impacting the process of other messages, [[SQS]] fits this use case
@@ -95,6 +112,10 @@
 > [[Backup]] provides automatic scheduled backups, lifecycle management to transition backups to cold storage, and long term retention policies to meet requirements
 - No need to write custom scripts for automation backups
 
+> [[Backup]] can be used to create backup of DBs such as [[Aurora]] in a second [[Region]] and leverage [[Route 53 routing policies#Failover|Route 53 Failover]]. This will require the second [[Region]] to have [[Aurora]] deployed there
+- Deploying the full infrastructure can cause [[Recovery Time Objective|RTO]] and [[Recovery Point Objective|RPO]] not be met
+- Even a scaled-down version is still too much downtime to meet [[Recovery Point Objective|RPO]] and [[Recovery Time Objective|RTO]]
+- Restoring from latest snapshot alone does not meet recovery requirement of 30 minutes or less
 # Encryption
 ## [[EBS]]
 > [[EBS]] can not be encrypted after being created, only on creation

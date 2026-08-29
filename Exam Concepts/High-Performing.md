@@ -15,6 +15,18 @@
 - For cheap storage, magnetic works
 - [[RDS]] works with Oracle DataBases, however it does not have operating system access
 - [[DynamoDB]] is a [[NoSQL]] DB, Oracle is a relational DB
+
+## FSx for...
+> [[FSx for Windows File Server]] is best used for SharePoint file storage migration with [[AD control]]
+- [[EFS]] does not natively integrate with [[AD control]]
+- [[SMB]] on [[Storage Gateway]] does not integrate with [[AD control]]
+- [[S3]] mounted on a Windows Server does not integrate with [[AD control]]
+- With [[FSx for Windows File Server]], [[FSx File Gateway]] is not needed
+
+> [[FSx for Lustre]] handles all underlying infrastructure, maintenance and backups, qualifying as being fully managed
+- [[Storage Gateway]] is not fully managed, as you would need to manage the [[EC2]]
+- [[EFS]] is not configurable to [[Lustre]], only [[NFS]]
+
 # Minimal Overhead
 ## Data Processing
 > Utilizing [[S3]] as a data storage, [[Lambda]] for function and [[Aurora]] for result storage, this minimizes overhead and provides scalability that is highly available
@@ -75,3 +87,28 @@
 - Single [[metric alarm]] with multiple thresholds would lead to more false positives as it would go off if one of the hardware flags are triggered
 - [[Cloudwatch Dashboard]] is good for visualization, no automation however
 - [[CloudWatch Synthetic]] is for monitoring application availability and performance, not metrics
+## [[RDS Multi-AZ Deployments]]
+> For [[Recovery Point Objective|RPO]] less than 1 second will be achieved by enabling [[RDS Multi-AZ Deployments]]
+- [[Auto Scaling Groups]] does not provide high availability or data replication
+- [[RDS Read Replica]] do not provide [[Recovery Point Objective|RPO]] of less than 1 second [[RDS Read Replica#Read Replica Use-cases|Use Cases]] 
+- [[DMS]] does not provide [[Recovery Point Objective|RPO]] of less than 1 second
+
+> For increased performance during production data staging
+## [[Gateways]]
+> For important files to experience low-latency leverage [[Gateway-Cached]] 
+# Network
+## [[CIDR Block]]
+> Takes up range /16 to /28 inside a [[VPC]]
+> [[AWS]] reserves 5 IP addresses from block (first 4 and last)
+1. Network Address
+2. [[VPC]] Router
+3. [[DNS Server]]
+4. Reserved for future use
+5. Broadcast address
+## [[DataSync]]
+> [[Direct Connect]] allows for private connection across [[AWS]] services and [[DataSync]] for data transfer of large, sensitive data
+- for the love of god, do not transfer sensitive data over the internet
+- [[DMS]] is good for databases, however [[DataSync]] is better for [[S3]]
+# Database
+## [[Aurora]]
+> [[Aurora]] provides the largest database capacity of 128TB compared to any other [[RDS]] engine, with fastest read replica, with replica lag being under 120 milliseconds 
