@@ -20,6 +20,10 @@
 - [[RDS]] is not optimized for storing JSON files
 
 > [[S3]] is less expensive than [[EBS]] or [[EFS]], so in most cases for data storage and you are looking to save on cost, especially long-term storage, [[S3]] is the answer
+
+## [[EBS]]
+> For cheap encryption at rest, configure the drive for encryption upon creation
+- When the application is writing the data, that data is not at rest
 # Expected Usage
 ## [[Reserved Instances]]
 > [[Reserved Instances]] are good for a service that needs to run 24/7, mission critical, with the ability to commit for a extended amount of time (1 year)
@@ -32,6 +36,18 @@
 ## Development environment
 > When introducing a dev environment into your [[EC2 auto scaling]] group, reducing the maximum number of allowed instances is the most cost effective solution because dev environments will not be receiving that much traffic
 - Having only one [[EC2]] instance in dev environment is not advisable as there would be no high availability or fault tolerance
+## [[EC2 Auto Scaling types]]
+> [[EC2 Auto Scaling types#Scheduled Scaling|Schedule Scaling]] is best for anticipated workloads and bypassing [[Instance warmup]]
+- [[Auto Scaling Groups]] capacity does not effect [[Instance warmup]]
+
+> If users are reporting an application is slow in the morning, monitoring CPU threshold and decreasing [[Cool Down]] period can assist via [[EC2 Auto Scaling types#Step Scaling|Step Scaling]]
+- [[EC2 Auto Scaling types#Scheduled Scaling|Scheduled scaling]] can work, however setting desired capacity before anticipated usage will cause unuse usage unless declared afterwards
+- [[EC2 Auto Scaling types#Target Tracking|Target Tracking]] can scale too aggressively
+## [[CloudWatch alarms]]
+> [[Application Auto Scaling]] with target tracking to scale when [[CloudWatch alarms]] metric is breach is best for reducing cost during peak periods followed by traffic decreases
+- [[Lambda]] requires writing custom code, which is unnecessary
+- [[EC2 Auto Scaling types#Simple Scaling|Simple Scaling]] scale only in one direction
+
 # One Time Events
 ## [[SNS]]
 > [[SNS]] is the most cost-effective for one-time text message for confirming registration
@@ -43,4 +59,26 @@
 - Basically if the answer has internet or query anywhere in it, that's the ==WRONG== answer
 ## [[Spot Instances]]
 > Utilizing [[Spot Instances]] for burst traffic that raises above capacity is a good idea for handling traffic above your baseline
-- [[On-Demand EC2 Instances]] is not price effective, but immediately available
+- [[On-Demand EC2 Instances]] is not price effective, but immediately available. Good for flexibility of no long-term commitment and per-second billing.
+## [[Redshift]]
+> For monthly reporting, [[Redshift]] is a good way to optimize large analytic workloads due to using a separate data warehouse
+- Larger instance class would increase performance, but less cost effective
+- [[RDS Multi-AZ Deployments|Standby Replica]] would have the same performance characteristics as the primary
+## [[Lambda]]
+> For infrequent API calls, using [[API Gateway]] targetting a [[Lambda]] can be the most cost effective way for to return a [[RESTful]] response
+- [[ECS]], [[LightSail]], [[EC2]] are all needed to be ran continuously
+
+> Developer needs to run code without provisioning or managing servers? [[Lambda]]
+- [[API Gateway]] can't run code
+- [[S3]] can't run code
+- [[EC2]] needs to be provisioned and managed
+# Cost Analysis
+## [[Cost Explorer]]
+> Provides pre-built reports to analyze cost by different services, users, or resources.
+- [[Athena]] requires creating queries, [[Cost Explorer]] does this automatically
+- [[Billing Dashboard]] only shows total costs, not cost breakdown
+- [[HoL - Budgets|Budgets]] is for alerts, not analysis
+## [[Trusted Advisor]]
+> To reduce [[RDS]] costs, [[Trusted Advisor]] can make recommendations to the billing account and check for instance optimization
+- Does not check for idle instances
+- Does not make recommendations for the accounts where the instances are running

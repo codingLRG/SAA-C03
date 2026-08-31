@@ -27,6 +27,7 @@
 - [[Storage Gateway]] is not fully managed, as you would need to manage the [[EC2]]
 - [[EFS]] is not configurable to [[Lustre]], only [[NFS]]
 
+
 # Minimal Overhead
 ## Data Processing
 > Utilizing [[S3]] as a data storage, [[Lambda]] for function and [[Aurora]] for result storage, this minimizes overhead and provides scalability that is highly available
@@ -57,15 +58,20 @@
 - [[EC2]] requires more overhead than [[ECS]] to scale and manage
 # Increasing Performance
 ## [[ALB|Application Load Balancer]] and [[EC2 auto scaling]]
-> If an application performs best at a specific hardware utilization, [[EC2 auto scaling]] [[target tracking policy]] can dynamically adjust the number of instances 
-- [[Simple scaling policy]] may cause fluctuate as they are threshold based
-- [[Lambda]]s require additional logic while [[target tracking policy]] handles this automatically
-- [[Scheduled scaling policy]] is an [[EC2 auto scaling]] option, however this can not be set to track hardware
+> If an application performs best at a specific hardware utilization, [[EC2 Auto Scaling types#Target Tracking|Target Tracking]] can dynamically adjust the number of instances 
+- [[EC2 Auto Scaling types#Simple Scaling|Simple Scaling]] may cause fluctuate as they are threshold based
+- [[Lambda]]s require additional logic while [[EC2 Auto Scaling types#Target Tracking|Target Tracking]] handles this automatically
+- [[EC2 Auto Scaling types#Scheduled Scaling|Schedule Scaling]] is an option, however this can not be set to track hardware
 
 > If a web application utilizes its own companies's SSL certificate and [[EC2]], utilizing a [[ALB]] with a [[HTTPS]] listener looking at a [[ACM]] with the SSL certificate can handle SSL encryption/decryption capacity consumption
 - Installing the SSL on each [[EC2]] will not address the capacity consumption for the encryption and decryption
 - Moving the SSL cert to a [[S3]] will not offload the encryption/decryption load
 - Utilizing a proxy [[EC2]] will not address the capacity consumption issue, as a single [[EC2]] is still handing the encryption/decryption
+
+> For migrating on premises to Cloud for transaction drop resistance, use [[SQS]] for messaging between [[EC2]] in an [[Auto Scaling Groups]], monitor [[SQS]] queue length with [[CloudWatch]] and scale up on failure
+- [[Lambda]]s would be more complex and expensive as [[SQS]] are designed for asynchronous messaging
+- [[SNS]] does not have queue length monitoring for [[EC2 auto scaling]]
+- Performance history would over-provision resources instead of utilizing [[EC2 auto scaling]]
 ## [[NLB|Network Load Balancer]] 
 > [[Global Accelerator]] can be used to connect applications across ==different continental== [[Region]]s (Europe to US) by creating [[endpoint group]]s for the specific [[Region]]s, and add [[NLB]]s as the endpoints
 - [[Route 53 routing policies#Geolocation]] will not route traffic to all continental [[Region]] instances
@@ -82,18 +88,19 @@
 - [[Lambda]] and [[DynamoDB]] do not address scaling and performance
 - [[ALB]] and [[EC2 auto scaling]] address scaling, but do not address performance optimization
 - [[Route 53]] with internal [[ALB]]s don't provide global delivery
+
+> Invalidating [[CloudFront]] cache will force fetch latest version of website files from [[S3]] 
+
+> Best for static sites now getting global attention, utilize [[Route 53]] records to point [[CloudFront]] distributions
+- [[Global Accelerator]] is way more expensive, but better for web applications
+- [[S3]] duplication across regions with [[Route 53 routing policies]] is more complex and expensive
+- [[S3 Transfer Acceleration]] is for client to [[S3]] not [[S3]] to client
+
 ## [[CloudWatch]]
 > To set up alerts to monitor multiple hardware utilization, with minimal false alerts, [[composite alerts]] are the solution
 - Single [[metric alarm]] with multiple thresholds would lead to more false positives as it would go off if one of the hardware flags are triggered
 - [[Cloudwatch Dashboard]] is good for visualization, no automation however
 - [[CloudWatch Synthetic]] is for monitoring application availability and performance, not metrics
-## [[RDS Multi-AZ Deployments]]
-> For [[Recovery Point Objective|RPO]] less than 1 second will be achieved by enabling [[RDS Multi-AZ Deployments]]
-- [[Auto Scaling Groups]] does not provide high availability or data replication
-- [[RDS Read Replica]] do not provide [[Recovery Point Objective|RPO]] of less than 1 second [[RDS Read Replica#Read Replica Use-cases|Use Cases]] 
-- [[DMS]] does not provide [[Recovery Point Objective|RPO]] of less than 1 second
-
-> For increased performance during production data staging
 ## [[Gateways]]
 > For important files to experience low-latency leverage [[Gateway-Cached]] 
 # Network
@@ -109,6 +116,35 @@
 > [[Direct Connect]] allows for private connection across [[AWS]] services and [[DataSync]] for data transfer of large, sensitive data
 - for the love of god, do not transfer sensitive data over the internet
 - [[DMS]] is good for databases, however [[DataSync]] is better for [[S3]]
+
+## [[SQS]]
+> To minimize duplicate messages, adjust [[ReceiveMessage]] wait time API
+- [[ChangeMessageVisibility]] actually makes the situation worse as more hosts are able to read the message and process it when an instance fails
+- [[MessageGroupID]] can assign a ID to each message to prevent duplicate message but ordering is lost
+
+> [[DelaySeconds]] is a [[SQS]] API setting that hides from consumer interfaces when a new message is added to the [[SQS]] queue
+
+> [[Glue]] can prevent reprocessing old data by utilizing [[Job Bookmarks]]
+- Deleting data after processing would result in the data being reprocessed every time the job is ran
+- [[NumberOfWorkers]] does not effect reprocessing
+- [[FindMatches]] does not prevent reprocessing processed data, only duplicates in data set
+
+> [[WaitTimeSeconds]] makes the [[SQS]] service wait a certain amount of time for one or more messages to be available before closing the connection
 # Database
 ## [[Aurora]]
 > [[Aurora]] provides the largest database capacity of 128TB compared to any other [[RDS]] engine, with fastest read replica, with replica lag being under 120 milliseconds 
+## [[IOPS]]
+> [[IOSP]] SSD storage provides more consistent latency than GP2 for insert heavy workloads
+
+## [[RDS Read Replica]]
+> [[RDS Read Replica]] allow traffic to be separated from write traffic, enables to be scaled horizontal. 
+- [[RDS Multi-AZ Deployments]] do not stop reads from coming from primary [[Availability Zone]], only useful for [[Origin Failover]]
+- To prevent bottle necking, [[RDS Read Replica]]s should be deployed with the same compute as source
+
+## [[RDS Multi-AZ Deployments]]
+> For [[Recovery Point Objective|RPO]] less than 1 second will be achieved by enabling [[RDS Multi-AZ Deployments]]
+- [[Auto Scaling Groups]] does not provide high availability or data replication
+- [[RDS Read Replica]] do not provide [[Recovery Point Objective|RPO]] of less than 1 second [[RDS Read Replica#Read Replica Use-cases|Use Cases]] 
+- [[DMS]] does not provide [[Recovery Point Objective|RPO]] of less than 1 second
+
+> For increased performance during production data staging
