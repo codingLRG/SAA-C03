@@ -19,9 +19,9 @@
 
 > [[Route 53 routing policies]] include:
 > Simple, Failover, Geolocation, Geoproximity, Latency-Based, Multivalue Answer, Weighted
-- Geolocation cannot dynamically shift traffic from one [[Region]] to another, use Geoproximity routing instead
-- Geoproximity is not fully capable of reducing Internet latency, use latency-based routing instead
-	- If app is expecting millions of users, use [[CloudFront]] or [[Global Accelerator]]
+- [[Route 53 routing policies#Geolocation|Geolocation]] cannot dynamically shift traffic from one [[Region]] to another, use [[Route 53 routing policies#Geoproximity|Geoproximity]] routing instead
+- [[Route 53 routing policies#Geoproximity|Geoproximity]] is not fully capable of reducing Internet latency, use [[Route 53 routing policies#Latency-Based|latency-based routing]] instead
+	- If app is expecting millions of users, use [[CloudFront]] for static apps or [[Global Accelerator]] for dynamic apps
 ## [[Amazon EC2 networking]]
 > [[Elastic IP address]]es remain associated with the instance, even after shutdown
 
@@ -31,12 +31,11 @@
 - [[Internet Gateway]] will make the private subnet public, this should be connected to your public subnet
 - [[NAT Instance]] will not allow for high availability unless you utilize multiple, however this can add up in cost
 - [[VPC Endpoint]] allows private connectivity from an [[AWS]] service, not the internet
-- [[NAT Gateway]] alone does not allow outbound internet traffic, routing needs to be updated
+- [[NAT Gateway]] alone does not allow outbound internet traffic, routing needs to be updated, via [[Route 53]]
 
 > Utilize multiple [[Subnets]] across [[Availability Zone]]s and configure the [[Auto Scaling Groups]] to spread across [[Availability Zone]]s to have high availability
-
 ## Failure Recovery
-> In the case of data failing to arrive due to network connection issues, requiring manually running the process again, configure the retry settings to increase the number of retries and longer wait time
+> In the case of data failing to arrive due to network connection issues and requiring manually running the process again, configure the retry settings to increase the number of retries and longer wait time
 - Multiple [[Availability Zone]] deployment would not help as the notification would still fail process when a network issue occurs
 - Caching the data would not ensure the data is eventually processed
 
@@ -47,7 +46,7 @@
 
 > For [[RDS]] automatic failover, utilize [[RDS Multi-AZ Deployments]] to copy data synchronously
 - This only works with one active one standby, +3 deployments does not exist
-- [[S3]] versioning is not a DB service
+- [[S3]] [[Versioning]] is not a DB service
 
 > [[CloudFormation]] is [[Infrastructure as Code]] allowing to deploy a replica of existing architecture and infrastructure into a different region in minutes
 - [[CloudFront]] is for media caching, [[CloudTrail]] is for auditing, [[CloudWatch]] is for monitoring services, [[CloudSearch]] is for searching on a website, [[CloudHSM]] is for SSL Processing
@@ -66,14 +65,14 @@
 
 > Some effects of [[SQS]] standard queue are that the queue does not serve the order they are generated in due to multiple hosts handling the queue, with each host not waiting for the order to be completed, and if the host does not finish the message, it is recent back into the queue
 
-> A [[SQS]] can be utilized to store from [[EC2]] to a DB like [[RDS]] while automatically processing order if an outage happens
+> A [[SQS]] can be utilized to store processed data from [[EC2]] to a DB like [[RDS]] while automatically processing order if an outage happens
 - Using [[SNS]] with a [[Lambda]] attached to a topic would add needless complexity and cost
 - [[ALB|Application Load Balancer]] would not assist if the system were to go down
 - Utilizing a [[ECS]] targeted by a [[EventBridge]] would require a refactoring the [[EC2]]
 
-> [[SQS]] can be retained for up to 14 days
+> [[SQS]] can retain messaged for up to 14 days
 
-> Enabling long polling by setting the [[SQS]] config to ReceiveMessageWaitTimeSeconds will reduce CPU cycles compared to short polling, which will return empty responses
+> Enabling long polling by setting the [[SQS]] config to [[ReceiveMessageWaitTimeSeconds]] will reduce CPU cycles compared to short polling, which will return empty responses
 - The max wait time is 20 seconds
 
 > [[SQS]]s can assist with processing [[SNS]] notifications to a [[Lambda]] by persisting the messages even if the [[Lambda]] fails to process the notification
