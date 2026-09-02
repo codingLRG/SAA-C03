@@ -21,6 +21,8 @@
 
 > [[S3]] is less expensive than [[EBS]] or [[EFS]], so in most cases for data storage and you are looking to save on cost, especially long-term storage, [[S3]] is the answer
 
+> [[S3 storage classes#Standard-IA|Standard-Infrequent Access]] is good for files that are accessed frequently while others are rarely accessed. It is also resilient.
+- [[S3 storage classes#Intelligent-Tiering|Intelligent-Tiering]] is more expensive for features that are not needed
 ## [[EBS]]
 > For cheap encryption at rest, configure the drive for encryption upon creation
 - When the application is writing the data, that data is not at rest
@@ -65,16 +67,20 @@
 - Larger instance class would increase performance, but less cost effective
 - [[RDS Multi-AZ Deployments|Standby Replica]] would have the same performance characteristics as the primary
 ## [[Lambda]]
-> For infrequent API calls, using [[API Gateway]] targetting a [[Lambda]] can be the most cost effective way for to return a [[RESTful]] response
+> For infrequent API calls, using [[API Gateway]] targeting a [[Lambda]] can be the most cost effective way for to return a [[RESTful]] response
 - [[ECS]], [[LightSail]], [[EC2]] are all needed to be ran continuously
 
 > Developer needs to run code without provisioning or managing servers? [[Lambda]]
 - [[API Gateway]] can't run code
 - [[S3]] can't run code
 - [[EC2]] needs to be provisioned and managed
+
+## [[EC2 instance]]
+> Increasing a instance type size for temporary resource-heavy test and changing back to the smaller size when able is probably the best way to cheapen an instance
 # Cost Analysis
 ## [[Cost Explorer]]
 > Provides pre-built reports to analyze cost by different services, users, or resources.
+> Good for filtering options to analyze unwanted service instances
 - [[Athena]] requires creating queries, [[Cost Explorer]] does this automatically
 - [[Billing Dashboard]] only shows total costs, not cost breakdown
 - [[HoL - Budgets|Budgets]] is for alerts, not analysis
