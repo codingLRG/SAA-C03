@@ -1,9 +1,0 @@
-views:
-  - type: cards
-    name: Vocab
-    filters:
-      and:
-        - file.folder == "Vocabulary"
-    order:
-      - file.name
-      - file.backlinks

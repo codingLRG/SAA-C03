@@ -9,6 +9,11 @@
 - [[EFS]] and [[EBS]] are not the way to go simply because versioning is not something they support by themselves
 	- [[EFS]] is mainly useful for [[POSIX]]
 	- [[EBS]] is for low latency storage
+
+> [[S3 Cross-Region Replication]] enables the simplest method to aggregate data globally across all regions
+- [[S3 Transfer Acceleration]] and using multipart uploading requires transfering data over public internet
+
+> For large PUT requests, utilize random prefix key-names and multipart uploads
 ## [[EBS]]
 > [[EBS]] enables operating system access, so in instances where the application needs to install certain files to operate a Oracles Database server, [[EBS]] is the way to go
 - For fast storage, [[EBS types]] SSD are a must
@@ -42,6 +47,9 @@
 > To store and access data in real time through an API, utilizing [[API Gateway]] and [[Lambda]] is the way to go
 - [[Athena]] and [[QuickSight]] is for analytics, not really suited for real time usage
 - [[Data Analytics]] is for streaming data sources, not utilizing an API
+
+> To build a report status of [[EC2 auto scaling]] events, [[CloudWatch#Metrics]] to stream data, [[Data Firehose]] to direct stream data to [[S3]]
+> Least overhead method as everything is [[Serverless]]
 ## [[Athena]]
 > For advanced analysis on logs and build visualizations, utilize [[Athena]] for SQL queries on the [[CloudFront]] logs store in an [[S3]] for analysis, and [[QuickSight]] for visualization
 - [[Glue]] is for [[ETL|Extract, transform and load]], not analytics
@@ -56,6 +64,11 @@
 - [[Lambda]] can not break an application into microservices
 - [[Amplify]] is a web app tool, not containerizing
 - [[EC2]] requires more overhead than [[ECS]] to scale and manage
+## [[Aurora]]
+> [[Serverless]] [[Database]] that simplify adding or removing compute capacity when needed with minimal effort
+> Supports [[MySQL]] and [[PostgreSQL]]
+- Avoid changing SQL types if able
+- [[EC2 auto scaling]] is a lot more hands on and is not needed
 # Increasing Performance
 ## [[ALB|Application Load Balancer]] and [[EC2 auto scaling]]
 > If an application performs best at a specific hardware utilization, [[EC2 Auto Scaling types#Target Tracking|Target Tracking]] can dynamically adjust the number of instances 
@@ -96,6 +109,14 @@
 - [[S3]] duplication across regions with [[Route 53 routing policies]] is more complex and expensive
 - [[S3 Transfer Acceleration]] is for client to [[S3]] not [[S3]] to client
 
+> ==CAN NOT== have an [[ALB|Application Load Balancer]] as the origin, only [[S3]], [[EC2]] or [[Lambda]]s qualify
+- This is where a [[Global Accelerator]] would come in handy
+## [[Global Accelerator]]
+> For an application with dynamic and static data, utilize [[CloudFront]] for the static, [[ALB]] for the dynamic, and have them both be endpoints for the [[Global Accelerator]]. For [[DNS]] resolution, have the [[Global Accelerator]] be the endpoint
+- Do not have the dynamic data be the endpoint of [[CloudFront]] as this is not its intended purpose
+
+> Leverage a [[NLB|Network Load Balancer]] and a [[Global Accelerator]] to route with the lowest latency ([[NLB]], with automatic failover ([[Global Accelerator]])
+- [[Route 53]] with a [[NLB]] can provide latency based routing to multi [[Region]]s, however this does not provide failover capabilities
 ## [[CloudWatch]]
 > To set up alerts to monitor multiple hardware utilization, with minimal false alerts, [[composite alerts]] are the solution
 - Single [[metric alarm]] with multiple thresholds would lead to more false positives as it would go off if one of the hardware flags are triggered
@@ -113,10 +134,9 @@
 4. Reserved for future use
 5. Broadcast address
 ## [[DataSync]]
-> [[Direct Connect]] allows for private connection across [[AWS]] services and [[DataSync]] for data transfer of large, sensitive data
+> [[Direct Connect]] allows for private connection across [[AWS]] services and [[DataSync]] for data transfer of large, sensitive data to an [[S3]]
 - for the love of god, do not transfer sensitive data over the internet
 - [[DMS]] is good for databases, however [[DataSync]] is better for [[S3]]
-
 ## [[SQS]]
 > To minimize duplicate messages, adjust [[ReceiveMessage]] wait time API
 - [[ChangeMessageVisibility]] actually makes the situation worse as more hosts are able to read the message and process it when an instance fails
@@ -130,21 +150,50 @@
 - [[FindMatches]] does not prevent reprocessing processed data, only duplicates in data set
 
 > [[WaitTimeSeconds]] makes the [[SQS]] service wait a certain amount of time for one or more messages to be available before closing the connection
+
+> Enables loose coupling for [[Lambda]] functions
+
+> To prevent data loss due to a [[Database]] from buffer spikes, utilize [[SQS]]
+- [[SNS]] topics still result in a direct connection
+## [[Kinesis]]
+### [[Data Streams]]
+> [[Kinesis]] [[Data Streams]] can handle more than 30TB of clickstream data daily, utilizing this can allow you to transfer that data to [[S3]] via [[Kinesis]] [[Data Firehose]]. For large analysis, use [[Redshift]]
+- [[Data Pipeline]] can not handle real-time streaming aspect of the data
+- [[EMR]] can not process real-time data
+
+> For processing realtime data, utilizing [[Data Streams]] and [[Lambda]] is the fastest option as [[Data Streams]] is designed for real-time streaming data ingestion and processing
+- First storing the data in an [[S3]] will add needless latency
+
+### [[Data Analytics]]
+> Uses [[Apache Flink]] to transform data during ingestion
+- [[Redshift]] can analyze data, but not during ingestion
+- [[EMR]] will take forever
+- [[Data Firehose]] can ingest data, not transform it
 # Database
 ## [[Aurora]]
 > [[Aurora]] provides the largest database capacity of 128TB compared to any other [[RDS]] engine, with fastest read replica, with replica lag being under 120 milliseconds 
+- 5 times more performance than [[RDS]] [[MySQL]]
+## [[DynamoDB]] 
+> [[DynamoDB]] provides much better horizontal scaling vs [[Aurora]]
+
+> If new data needs to be summarized while summarized data needs to be achieved, using a calculated hash in from of the date/time value in the [[partition key]] will force the [[DynamoDB]] to hop from partition to partition, then create a new table each day. This will require you to reconfigure the old table for infrequent use.
+- [[partition key]] is not enough
 ## [[IOPS]]
 > [[IOSP]] SSD storage provides more consistent latency than GP2 for insert heavy workloads
-
 ## [[RDS Read Replica]]
 > [[RDS Read Replica]] allow traffic to be separated from write traffic, enables to be scaled horizontal. 
 - [[RDS Multi-AZ Deployments]] do not stop reads from coming from primary [[Availability Zone]], only useful for [[Origin Failover]]
 - To prevent bottle necking, [[RDS Read Replica]]s should be deployed with the same compute as source
-
 ## [[RDS Multi-AZ Deployments]]
 > For [[Recovery Point Objective|RPO]] less than 1 second will be achieved by enabling [[RDS Multi-AZ Deployments]]
 - [[Auto Scaling Groups]] does not provide high availability or data replication
 - [[RDS Read Replica]] do not provide [[Recovery Point Objective|RPO]] of less than 1 second [[RDS Read Replica#Read Replica Use-cases|Use Cases]] 
 - [[DMS]] does not provide [[Recovery Point Objective|RPO]] of less than 1 second
 
-> For increased performance during production data staging
+> Useful for increased performance during production data staging
+
+> For minimal changes to the architecture, you can introduce a [[Vocabulary/RDS Proxy|RDS Proxy]] to improve performance
+- [[ElastiCache]] is a more architectural change than [[Vocabulary/RDS Proxy|RDS Proxy]] 
+- [[DynamoDB]] is a [[NoSQL]] [[Database]]
+
+> If you ever see the phrase "High Availability" in the question, it is a [[Multi-AZ]] deployment
