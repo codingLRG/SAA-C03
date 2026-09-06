@@ -37,6 +37,9 @@
 - During [[VPC]] creation, create a [[VPN]] connection
 - No need to make a public subnet
 - [[NAT Interface]] needs to be connected, however this should also occur during [[VPC]] creation
+## [[Network Firewall]]
+> Creates stateful firewall rules to inspect and filter traffic
+- [[Firewall Manager]] is a policy and compliance management service
 ## [[VPC]]
 > Secure connection across [[VPC]]s with no single point of failure or bandwidth bottlenecks can occur with a feature called [[Peering connection]]
 - [[VPC Endpoint]]s does not allow complete communication, only supported services can utilize this feature
@@ -45,7 +48,6 @@
 - [[Security Group]] allowing traffic from the public IP of the [[VPC]] unnecessarily exposes the [[VPC]] to the internet
 - For the love of god, don't assign the resource a public ip if you want it to be private
 - A [[EC2]] proxy that forwards wanted request needlessly adds complexity and security risks 
-
 # Least privilege
 ## [[FSx for Windows File Server]]
 > For existing AD integration with permissions in tact, you can join the [[FSx for Windows File Server]] to the on-premises AD
@@ -73,6 +75,16 @@
 - Creating a new identity provider is used to authenticate users, not grant access
 
 > [[IAM Role]] can be attached to preexisting [[EC2]]s and does not require a reboot to apply
+
+> Can grant read-only access to specific services
+## [[VPC]]
+> To ensure that someone accessing an environment triggers a notification, you can leverage [[VPC]] flow logs and [[CloudWatch alarms]] to notify when a connection with [[RDP]] or [[SSH]] is made
+- [[CloudWatch Application Insight]] does not call out [[RDP]] or [[SSH]]
+- [[EventBridge]] can listen for when an instance is accessed, but not how
+- [[GuardDuty]] can identify malicious activity, but it does not provide real-time notification
+## [[SSO]]
+> Enable SSO and enable one-way trust between AD and [[SSO]] using [[Directory Service]] 
+- Two-way would make it so [[AWS]] will sync changes back to AD, do not do this is managed on-premises
 # Encryption at rest and in transit
 ## [[S3]]
 > Server-side encryption allows for data to be encrypted while uploaded (transit) and stored (rest)
@@ -89,6 +101,8 @@
 - Signed URLs restricts data access, but there is no encryption
 - Signed cookies also restricts data access, but provides no encryption
 - Policy enforcement over HTTPS does not encrypt data
+
+> Two ways to allow access without using cookies or with hardcoded URLs is to leverage [[JSON Web Tokens]] and [[Signed URL]]
 ## [[KMS]] and [[ACM]]
 > [[KMS]] can encrypt at rest, [[ACM]] can encrypt in transit (roles can not be switched)
 -  Using the root account to enable encrypt at rest and in transit is terrible for security, but technically possible
@@ -98,6 +112,8 @@
 - Server side encryption doesn't log usage
 - [[S3 managed keys]] are not automatically rotated
 - [[KMS]] can also be manually rotated
+
+> [[KMS]] can enable encryption [[At-Rest]]
 # Accidental deletion
 ## [[S3]]
 > To prevent accidental deletion of data with an [[S3]], [[MFA Delete]] and [[Versioning]] can be enabled
@@ -114,6 +130,8 @@
 - [[Inspector]] is for [[EC2]]s, not [[S3]]s
 - Server access logging does not prevent changes to the bucket, only logging (hence the name)
 - [[EventBridge]] or [[CloudWatch Events]] can trigger alerts on log events, but this does not detect unauthorized changes
+- [[CloudTrail]] is for recording [[API]] calls, not tracking instance changes
+- [[CloudWatch]] is for monitoring instance metrics, not changes
 
 > [[S3 Object Lock]] has two modes, [[Compliance mode]] and [[Governance mode]]
 > Both very similar, however [[Compliance mode]] has a very strict no files can be deleted compared to [[Governance mode]], which allows designated users to modify and delete
@@ -122,6 +140,8 @@
 - Don't use a [[Lambda]] to track hashes for the love of god
 
 > Only the owners of a bucket can delete items in a [[S3]], this includes public buckets
+## [[Macie]]
+> Can be leveraged to detect and notify admins of private data being uploaded
 # Securing credentials
 ## [[Secrets Manager]]
 > User credentials can be safely stored within [[Secrets Manager]] to access services, including [[AWS]]es. 
@@ -146,4 +166,6 @@
 > For system patching from [[EC2 auto scaling]], utilize [[bootstrap]]ping script that installs the latest updated
 - Ensure that the update process is immediate and not manual
 - This patching is not automatic by default, action will be needed
-- 
+
+> [[Patch Manager]] is the prime solution for patching and updating across a fleet of instances
+- Using the Run command across the fleet is not purpose-built for patching

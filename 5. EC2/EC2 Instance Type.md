@@ -7,7 +7,7 @@ aliases:
 CPU Options:
 - Intel
 - AMD
-- AWS Graviton (best price performance for cloud
+- AWS Graviton (best price performance for cloud)
  
 Newer [[EC2]] are more cost-efficient
 

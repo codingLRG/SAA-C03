@@ -9,6 +9,11 @@
 
 > [[Spot Instances]] will execute a forced shutdown when you receive a notification of termination without intervention (ie Delay or Termination Protection), or if the lease expires
 
+> Adding desired, max and min instances does not have any native tracking, an [[EC2 Auto Scaling types]] needs to be selected
+
+> If there is a question that asks about high availability, chose the one that talks about 2 [[Availability Zone]]s for each service or [[Multi-AZ]] deployments
+
+> Detailed monitoring sends metrics every 1 minute
 ## [[Elastic Beanstalk]]
 > [[Elastic Beanstalk]] is used for web applications and static websites
 - Not for long-running jobs, use [[Batch]]
@@ -34,6 +39,18 @@
 - [[NAT Gateway]] alone does not allow outbound internet traffic, routing needs to be updated, via [[Route 53]]
 
 > Utilize multiple [[Subnets]] across [[Availability Zone]]s and configure the [[Auto Scaling Groups]] to spread across [[Availability Zone]]s to have high availability
+
+> Routing table should be adjusted to allow subnets to communicate, destination being the main domain, target being local
+
+> Configure the load balancer to pull from both servers in the case where there is file discrepancy due to multi instances
+- No need for file duplication, this would balloon costs and require the drives be synced
+- [[EFS]] can solve this, however if utilizing [[EBS]], the rearchitecturing is unnecessary
+
+> To allow inbound outbound traffic, ensure the proper inbound port is allowed, outbound can be ephemeral if unimportant
+
+> [[ALB]] works on OSI layer 7 (application), [[NLB]] works on OSI layer 4 (network)
+
+> Attach an Internet gateway to the subnet for internet activitiy
 ## Failure Recovery
 > In the case of data failing to arrive due to network connection issues and requiring manually running the process again, configure the retry settings to increase the number of retries and longer wait time
 - Multiple [[Availability Zone]] deployment would not help as the notification would still fail process when a network issue occurs
@@ -57,6 +74,7 @@
 - [[Lambda]] is unnecessary to use custom scripting
 - No need to run [[EC2]] in a different [[Region]] online as this will result in unused capacity
 
+> [[DataSync]] can be used to transfer large datasets between [[Region]]s with minimal overhead
 ## [[SQS]]
 > For sending messages between application that have a high throughput and in the case the processing fails, the messages must be retained for 2 days while not impacting the process of other messages, [[SQS]] fits this use case
 - [[EC2]] utilizing [[Redis]] does not retain messages for failed processes
@@ -81,18 +99,32 @@
 - Better than scheduled scaling
 - [[CloudTrail]] does not enable decoupling or scaling capabilities
 - Using just [[EC2 auto scaling]] does not account for variable compute node's workload
+
+> To stop items in a queue be repeatedly processed, if already leveraging a [[Lambda]] function, leverage it to delete the message after processing
+- Long pulling would reduce the number of API calls, however this wouldn't stop repeated processing
+- This does not handle duplicate messages, that would be resolved by FIFO and deduplication ID
+- [[SQS]] timing out does not handle deleting messages after processing
+
+> Scaling on backlog is a good idea when a two part service has a faster processing time than another
+- Scaling off of queue notification is not ideal as it does not optimize resource use, meaning overprovisioning may occur
+
+> To ensure orders are processed in the order they are received, FIFO is a must
 # Migration
 ## [[Aurora]]
 > Migrating from onsite to [[Aurora]], it is best to make a backup copy of the DB on onsite computer and then create an ongoing replication process between the DBs
 - This ensures that the DB is available during replication and in sync
 - A cut-over migration would make the original DB unavailable
 - Utilizing [[S3]] to store snapshots would require [[Aurora]] to be updated manually, causing the DB not to be synchronized in real time
-
 ## [[FSx for Windows File Server]]
 > In the case for a migration to a [[AWS]] file share, and the company is already utilizing Windows file shares, its best to utilize [[FSx for Windows File Server]]
 - [[S3]] is a bad for a file system, its object storage
 - [[IAM]] usage would change how users access files, which will change workflow
 - [[EFS]] is Linux only
+## [[Transfer Family]]
+> To allow [[SFTP]] to [[S3]], [[Transfer Family]] is the solution
+- Can be done with [[EC2]] but why would you?
+## [[S3]]
+> While uploading via [[SFTP]] is possible, there is unnecessary overhead that can be mitigated by utilizing [[CLI]] instead
 # Long-term
 ## [[S3]] modes
 > To ensure documents are not overwritten or deleted while being encrypted with keys rotated out every year, utilize [[S3 Object Lock]] compliance or governance mode with the least amount of overhead
@@ -100,13 +132,15 @@
 - Can grant certain permissions to users to allow delete override
 ## [[Transcribe]]
 > To record and analyze audio calls that can recognize multiple speakers and create transcripts, utilize [[Transcribe]]. To store for long duration, utilize [[S3]] long-term storage. To analyze from [[S3]], use [[Athena]]
-- [[Comprehend]] is text analysis, [[Rekognition]] is visual extraction like text and faces, [[Translate]] is language translation, [[Textract]] is for text extraction
+- [[Comprehend]] is text analysis
+- [[Rekognition]] is visual extraction like text and faces
+- [[Translate]] is language translation
+- [[Textract]] is for text extraction from image documentation
 ## Messaging and storing
 > To send messages to users via SMS use either [[Pinpoint]], [[Connect]] or [[SNS]], to process and store for one year, [[Lambda]] is a way to go
 - [[Lambda]] can store information for up to one year
 - [[Kinesis]] can not store replies for 1 year
 - [[SQS]] can not send SMS to users
-
 ## [[Backup]]
 > [[Backup]] provides automatic scheduled backups, lifecycle management to transition backups to cold storage, and long term retention policies to meet requirements
 - No need to write custom scripts for automation backups

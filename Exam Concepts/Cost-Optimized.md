@@ -23,6 +23,8 @@
 
 > [[S3 storage classes#Standard-IA|Standard-Infrequent Access]] is good for files that are accessed frequently while others are rarely accessed. It is also resilient.
 - [[S3 storage classes#Intelligent-Tiering|Intelligent-Tiering]] is more expensive for features that are not needed
+
+> [[S3]]s can be utilize to extend [[SMB]] file servers via [[S3 File Gateway]], old data can be migrated too via [[S3 Lifecycle]]
 ## [[EBS]]
 > For cheap encryption at rest, configure the drive for encryption upon creation
 - When the application is writing the data, that data is not at rest
@@ -62,6 +64,9 @@
 ## [[Spot Instances]]
 > Utilizing [[Spot Instances]] for burst traffic that raises above capacity is a good idea for handling traffic above your baseline
 - [[On-Demand EC2 Instances]] is not price effective, but immediately available. Good for flexibility of no long-term commitment and per-second billing.
+
+> Batch jobs can be cost-effectively handle with [[Spot Instances]]
+- [[Batch]] is not the most cost effective option
 ## [[Redshift]]
 > For monthly reporting, [[Redshift]] is a good way to optimize large analytic workloads due to using a separate data warehouse
 - Larger instance class would increase performance, but less cost effective
@@ -69,14 +74,16 @@
 ## [[Lambda]]
 > For infrequent API calls, using [[API Gateway]] targeting a [[Lambda]] can be the most cost effective way for to return a [[RESTful]] response
 - [[ECS]], [[LightSail]], [[EC2]] are all needed to be ran continuously
+- If never prompted, you never pay
 
 > Developer needs to run code without provisioning or managing servers? [[Lambda]]
 - [[API Gateway]] can't run code
 - [[S3]] can't run code
 - [[EC2]] needs to be provisioned and managed
-
-## [[EC2 instance]]
+## [[EC2 Instance Type]]
 > Increasing a instance type size for temporary resource-heavy test and changing back to the smaller size when able is probably the best way to cheapen an instance
+
+> Tenancy can be change from Host and Dedicated via stopping and starting again, Dedicated meaning you own the full physical machine
 # Cost Analysis
 ## [[Cost Explorer]]
 > Provides pre-built reports to analyze cost by different services, users, or resources.
@@ -88,3 +95,5 @@
 > To reduce [[RDS]] costs, [[Trusted Advisor]] can make recommendations to the billing account and check for instance optimization
 - Does not check for idle instances
 - Does not make recommendations for the accounts where the instances are running
+## [[EC2]]
+> Minimum billing period + charge is 60 seconds
